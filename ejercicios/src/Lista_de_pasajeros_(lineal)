@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class ListaPasajeros {
+    public static void main(String[] args) {
+        String[] pasajeros = new String[6];
+        
+        Scanner entrada = new Scanner(System.in);
+        
+        int asientosOcupados = 0;
+        
+        System.out.println("=== REGISTRO DE PASAJEROS ===");
+        System.out.println("El vuelo tiene capacidad para 6 pasajeros.\n");
+        
+        for (int i = 0; i < pasajeros.length; i++) {
+            System.out.print("Ingrese el nombre del pasajero #" + (i + 1) + " (o escriba 'salir' para terminar): ");
+            String nombre = entrada.nextLine();
+            
+            if (nombre.equalsIgnoreCase("salir")) {
+                break;
+            }
+            
+            pasajeros[i] = nombre;
+            asientosOcupados++;
+        }
+        
+        System.out.println("\n=== LISTA DE PASAJEROS ===");
+        
+        for (int i = 0; i < pasajeros.length; i++) {
+            // Verificamos que el asiento NO esté vacío (null)
+            if (pasajeros[i] != null) {
+                // i + 1 porque los asientos empiezan en 1, no en 0
+                System.out.println("Asiento " + (i + 1) + ": " + pasajeros[i]);
+            }
+        }
+        
+        // PASO 3: Mostramos cuántos asientos están ocupados
+        System.out.println("\n=== RESUMEN ===");
+        System.out.println("Asientos ocupados: " + asientosOcupados + " de 6");
+        System.out.println("Asientos disponibles: " + (6 - asientosOcupados));
+    
+    }
+}
