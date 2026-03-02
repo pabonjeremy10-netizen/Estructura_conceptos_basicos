@@ -1,0 +1,29 @@
+public class ejer_15 {
+    
+    public static void main(String[] args) {
+        String[] dias = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
+        double[] temperaturas = {22.5, 24.3, 21.8, 25.6, 23.1, 26.2, 20.5};
+        
+        double suma = 0;
+        for (int i = 0; i < temperaturas.length; i++) {
+            suma += temperaturas[i];
+        }
+        
+        double promedio = suma / temperaturas.length;
+        
+        System.out.println("REGISTRO DE TEMPERATURAS SEMANALES\n");
+        System.out.println("Temperaturas por día:");
+        for (int i = 0; i < temperaturas.length; i++) {
+            System.out.println(dias[i] + ": " + temperaturas[i] + "°C");
+        }
+        
+        System.out.println("\nPromedio semanal: " + promedio + "°C");
+        
+        System.out.println("\nDías por encima del promedio:");
+        for (int i = 0; i < temperaturas.length; i++) {
+            if (temperaturas[i] > promedio) {
+                System.out.println(dias[i] + ": " + temperaturas[i] + "°C");
+            }
+        }
+    }
+}
