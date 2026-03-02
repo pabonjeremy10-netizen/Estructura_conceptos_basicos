@@ -1,0 +1,61 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+// Clase Nodo
+class Nodo {
+    String cargo;
+    Nodo izquierdo;
+    Nodo derecho;
+
+    // Constructor
+    public Nodo(String cargo) {
+        this.cargo = cargo;
+        this.izquierdo = null;
+        this.derecho = null;
+    }
+}
+
+public class ejer14_Nodo_empleado {
+
+    public static void main(String[] args) {
+
+        // Crear nodos según la jerarquía
+        Nodo gerente = new Nodo("Gerente");
+
+        Nodo supervisor1 = new Nodo("Supervisor1");
+        Nodo supervisor2 = new Nodo("Supervisor2");
+
+        Nodo analista1 = new Nodo("Analista1");
+        Nodo analista2 = new Nodo("Analista2");
+
+        // Construcción del árbol
+        gerente.izquierdo = supervisor1;
+        gerente.derecho = supervisor2;
+
+        supervisor1.izquierdo = analista1;
+        supervisor1.derecho = analista2;
+
+        // Recorrido por niveles
+        System.out.println("Recorrido por niveles:");
+        recorrerPorNiveles(gerente);
+    }
+
+    // Método BFS (nivel por nivel)
+    public static void recorrerPorNiveles(Nodo raiz) {
+
+        Queue<Nodo> cola = new LinkedList<>();
+        cola.add(raiz);
+
+        while (!cola.isEmpty()) {
+            Nodo actual = cola.poll();
+
+            System.out.println(actual.cargo);
+
+            if (actual.izquierdo != null)
+                cola.add(actual.izquierdo);
+
+            if (actual.derecho != null)
+                cola.add(actual.derecho);
+        }
+    }
+}
