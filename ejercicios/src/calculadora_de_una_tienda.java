@@ -1,3 +1,4 @@
+//Ejercicio 2
 //Calcuadora de una tienda
 // tienda de barrio vende productos al por menor. El cajero necesita calcular:
 //Precio unitario de un producto (double)
