@@ -1,70 +1,71 @@
-import java.util.ArrayList;
+//Árbol de empleados (no lineal)
+//Una empresa tiene la siguiente jerarquía:
+//
+//         Gerente
+//        /       \
+//   Supervisor1  Supervisor2
+//    /      \
+// Analista1 Analista2
+//Modela la jerarquía con nodos que tengan el campo cargo.
+//Imprime el árbol recorriéndolo nivel por nivel.
 import java.util.LinkedList;
 import java.util.Queue;
 
-class NodoEmpleado {
-    String nombre;
+// Clase Nodo
+class Nodo {
     String cargo;
-    ArrayList<NodoEmpleado> subordinados;
-    
-    public NodoEmpleado(String nombre, String cargo) {
-        this.nombre = nombre;
+    Nodo izquierdo;
+    Nodo derecho;
+
+    // Constructor
+    public Nodo(String cargo) {
         this.cargo = cargo;
-        this.subordinados = new ArrayList<>();
-    }
-    
-    public void agregarSubordinado(NodoEmpleado empleado) {
-        subordinados.add(empleado);
+        this.izquierdo = null;
+        this.derecho = null;
     }
 }
 
-public class ejer14_nodo_empleado {
-    
-    public static void recorrerPorNiveles(NodoEmpleado raiz) {
-        Queue<NodoEmpleado> cola = new LinkedList<>();
-        Queue<Integer> niveles = new LinkedList<>();
-        
-        cola.add(raiz);
-        niveles.add(0);
-        
-        int nivelActual = 0;
-        System.out.println("\nJERARQUIA DE EMPLEADOS:\n");
-        
-        while (!cola.isEmpty()) {
-            NodoEmpleado nodo = cola.poll();
-            int nivel = niveles.poll();
-            
-            if (nivel > nivelActual) {
-                nivelActual = nivel;
-                System.out.println();
-            }
-            
-            String espacios = "";
-            for (int i = 0; i < nivel; i++) {
-                espacios += "  ";
-            }
-            
-            System.out.println(espacios + nodo.nombre + " (" + nodo.cargo + ")");
-            
-            for (NodoEmpleado sub : nodo.subordinados) {
-                cola.add(sub);
-                niveles.add(nivel + 1);
-            }
-        }
-    }
-    
+public class ejer14_Nodo_empleado {
+
     public static void main(String[] args) {
-        NodoEmpleado gerente = new NodoEmpleado("Juan", "Gerente");
-        NodoEmpleado supervisor1 = new NodoEmpleado("Maria", "Supervisor");
-        NodoEmpleado supervisor2 = new NodoEmpleado("Carlos", "Supervisor");
-        NodoEmpleado analista1 = new NodoEmpleado("Pedro", "Analista");
-        NodoEmpleado analista2 = new NodoEmpleado("Laura", "Analista");
-        
-        gerente.agregarSubordinado(supervisor1);
-        gerente.agregarSubordinado(supervisor2);
-        supervisor1.agregarSubordinado(analista1);
-        supervisor1.agregarSubordinado(analista2);
-        
+
+        // Crear nodos según la jerarquía
+        Nodo gerente = new Nodo("Gerente");
+
+        Nodo supervisor1 = new Nodo("Supervisor1");
+        Nodo supervisor2 = new Nodo("Supervisor2");
+
+        Nodo analista1 = new Nodo("Analista1");
+        Nodo analista2 = new Nodo("Analista2");
+
+        // Construcción del árbol
+        gerente.izquierdo = supervisor1;
+        gerente.derecho = supervisor2;
+
+        supervisor1.izquierdo = analista1;
+        supervisor1.derecho = analista2;
+
+        // Recorrido por niveles
+        System.out.println("Recorrido por niveles:");
         recorrerPorNiveles(gerente);
+    }
+
+    // Método BFS (nivel por nivel)
+    public static void recorrerPorNiveles(Nodo raiz) {
+
+        Queue<Nodo> cola = new LinkedList<>();
+        cola.add(raiz);
+
+        while (!cola.isEmpty()) {
+            Nodo actual = cola.poll();
+
+            System.out.println(actual.cargo);
+
+            if (actual.izquierdo != null)
+                cola.add(actual.izquierdo);
+
+            if (actual.derecho != null)
+                cola.add(actual.derecho);
+        }
     }
 }
