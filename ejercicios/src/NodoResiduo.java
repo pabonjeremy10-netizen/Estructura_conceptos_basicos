@@ -1,3 +1,17 @@
+/*ejercicio 13
+Clasificación de residuos (no lineal)
+Modela una jerarquía de tipos de residuos con una estructura de árbol usando nodos:
+
+        Residuos
+       /        \
+  Orgánicos   Inorgánicos
+   /    \       /      \
+Comida Jardín Plástico Papel
+Crea la clase NodoResiduo con un campo nombre y referencias izquierdo y derecho.
+Construye el árbol mostrado.
+Imprime la raíz y todos sus descendientes indicando el nivel.
+
+*/
 public class ArbolResiduos {
     NodoResiduo raiz;
     
