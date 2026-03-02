@@ -1,0 +1,70 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
+class NodoEmpleado {
+    String nombre;
+    String cargo;
+    ArrayList<NodoEmpleado> subordinados;
+    
+    public NodoEmpleado(String nombre, String cargo) {
+        this.nombre = nombre;
+        this.cargo = cargo;
+        this.subordinados = new ArrayList<>();
+    }
+    
+    public void agregarSubordinado(NodoEmpleado empleado) {
+        subordinados.add(empleado);
+    }
+}
+
+public class ejer14_nodo_empleado {
+    
+    public static void recorrerPorNiveles(NodoEmpleado raiz) {
+        Queue<NodoEmpleado> cola = new LinkedList<>();
+        Queue<Integer> niveles = new LinkedList<>();
+        
+        cola.add(raiz);
+        niveles.add(0);
+        
+        int nivelActual = 0;
+        System.out.println("\nJERARQUIA DE EMPLEADOS:\n");
+        
+        while (!cola.isEmpty()) {
+            NodoEmpleado nodo = cola.poll();
+            int nivel = niveles.poll();
+            
+            if (nivel > nivelActual) {
+                nivelActual = nivel;
+                System.out.println();
+            }
+            
+            String espacios = "";
+            for (int i = 0; i < nivel; i++) {
+                espacios += "  ";
+            }
+            
+            System.out.println(espacios + nodo.nombre + " (" + nodo.cargo + ")");
+            
+            for (NodoEmpleado sub : nodo.subordinados) {
+                cola.add(sub);
+                niveles.add(nivel + 1);
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        NodoEmpleado gerente = new NodoEmpleado("Juan", "Gerente");
+        NodoEmpleado supervisor1 = new NodoEmpleado("Maria", "Supervisor");
+        NodoEmpleado supervisor2 = new NodoEmpleado("Carlos", "Supervisor");
+        NodoEmpleado analista1 = new NodoEmpleado("Pedro", "Analista");
+        NodoEmpleado analista2 = new NodoEmpleado("Laura", "Analista");
+        
+        gerente.agregarSubordinado(supervisor1);
+        gerente.agregarSubordinado(supervisor2);
+        supervisor1.agregarSubordinado(analista1);
+        supervisor1.agregarSubordinado(analista2);
+        
+        recorrerPorNiveles(gerente);
+    }
+}
