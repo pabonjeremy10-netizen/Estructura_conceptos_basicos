@@ -1,3 +1,10 @@
+/*ejercicio 12
+    Historial de ventas (lineal)
+Una tienda online guarda las ventas del día en un arreglo de double:
+
+Almacena 7 ventas de ejemplo.
+Calcula e imprime: la venta más alta, la venta más baja y el total del día.
+*/
 public class historial_ventas {
     public static void main(String[] args) {
         double[] ventas = {150.50, 200.00, 75.30, 320.75, 180.20, 95.40, 250.10};
