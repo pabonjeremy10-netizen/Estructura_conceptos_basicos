@@ -1,4 +1,8 @@
-public class ficha_estudiante {
+//ejer 1
+//Ficha de un estudiante
+//Un sistema universitario necesita registrar la información básica de un estudiante:
+//nombre completo, código (número entero), semestre actual, promedio acumulado y si está matriculado o no.
+    public class ficha_estudiante {
 
     public static void main(String[] args) {
 
