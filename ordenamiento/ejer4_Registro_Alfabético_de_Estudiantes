@@ -1,0 +1,48 @@
+package ordenamiento;
+
+import java.util.Scanner;
+
+public class ejer4_Registro_Alfabético_de_Estudiantes {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("--- REGISTRO DE ASISTENCIA ALFABÉTICO ---");
+        System.out.print("¿Cuántos alumnos hay en la lista?: ");
+        int n = sc.nextInt();
+        sc.nextLine(); 
+
+        String[] estudiantes = new String[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Nombre del estudiante " + (i + 1) + ": ");
+            estudiantes[i] = sc.nextLine();
+        }
+
+        for (int i = 1; i < n; i++) {
+            String nombreActual = estudiantes[i];
+            int j = i - 1;
+
+            /*  EXPLICACIÓN DEL MÉTODO compareToIgnoreCase:
+              Como no podemos usar los símbolos '>' o '<' con palabras, usamos este método.
+              Si 'estudiantes[j].compareToIgnoreCase(nombreActual)' nos da un número mayor a 0, 
+              significa que el nombre de la izquierda va después en el abecedario. 
+              Entonces, tenemos que moverlo a la derecha para hacer espacio.
+             */
+            while (j >= 0 && estudiantes[j].compareToIgnoreCase(nombreActual) > 0) {
+                estudiantes[j + 1] = estudiantes[j];
+                j--;
+            }
+            estudiantes[j + 1] = nombreActual;
+        }
+
+        System.out.println("\n LISTA DE ASISTENCIA ORDENADA (A-Z):");
+        System.out.println("---------------------------------------");
+        for (int i = 0; i < estudiantes.length; i++) {
+            System.out.println((i + 1) + ". " + estudiantes[i]);
+        }
+        System.out.println("---------------------------------------");
+
+        sc.close();
+    }
+}
