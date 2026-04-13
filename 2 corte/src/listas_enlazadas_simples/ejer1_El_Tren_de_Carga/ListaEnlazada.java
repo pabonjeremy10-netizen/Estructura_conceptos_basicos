@@ -7,7 +7,6 @@ public class ListaEnlazada {
         cabeza = null;
     }
 
-    // Agregar al final
     public void agregarVagon(String contenido, double peso, String origen, String destino) {
 
         Vagon nuevo = new Vagon(contenido, peso, origen, destino);
@@ -25,7 +24,6 @@ public class ListaEnlazada {
         }
     }
 
-    // Calcular peso total
     public double calcularPesoTotal() {
 
         double total = 0;
@@ -39,7 +37,6 @@ public class ListaEnlazada {
         return total;
     }
 
-    // Mostrar tren
     public void mostrarTren() {
 
         if (cabeza == null) {
