@@ -9,7 +9,6 @@ public class ListaCanciones {
         actual = null;
     }
 
-    // Agregar al final
     public void agregarAlFinal(String titulo, String artista, int duracion, String genero) {
 
         Cancion nueva = new Cancion(titulo, artista, duracion, genero);
@@ -26,7 +25,6 @@ public class ListaCanciones {
         }
     }
 
-    // Agregar después de la actual
     public void agregarSiguiente(String titulo, String artista, int duracion, String genero) {
 
         if (actual == null) {
@@ -40,7 +38,6 @@ public class ListaCanciones {
         actual.siguiente = nueva;
     }
 
-    // 🔥 Visualización estilo profe
     public void mostrarLista() {
 
         if (cabeza == null) {
@@ -66,10 +63,9 @@ public class ListaCanciones {
         System.out.println(); // salto final
     }
 
-    // 🔥 Reto mejor explicado
     public void mostrarDuracionTotal() {
 
-        int totalTiempo = 0; // variable acumuladora
+        int totalTiempo = 0;
 
         Cancion aux = cabeza;
 
