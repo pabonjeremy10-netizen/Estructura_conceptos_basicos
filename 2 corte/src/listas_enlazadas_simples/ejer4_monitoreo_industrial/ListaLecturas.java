@@ -8,7 +8,6 @@ public class ListaLecturas {
         cabeza = null;
     }
 
-    // Agregar al inicio (lo más reciente primero)
     public void agregarLectura(int id, double temp, double presion, String hora) {
 
         Lectura nueva = new Lectura(id, temp, presion, hora);
@@ -17,7 +16,6 @@ public class ListaLecturas {
         cabeza = nueva;
     }
 
-    // Mostrar todas
     public void mostrarLecturas() {
 
         Lectura aux = cabeza;
@@ -31,7 +29,6 @@ public class ListaLecturas {
         }
     }
 
-    // 🔥 Reto: temperatura más alta
     public void mostrarTemperaturaMaxima() {
 
         if (cabeza == null) {
