@@ -12,7 +12,6 @@ public class ListaCanciones {
         actual = null;
     }
 
-    // Agregar al final
     public void agregarCancion(String titulo, String artista, int duracion) {
 
         Cancion nueva = new Cancion(titulo, artista, duracion);
@@ -28,7 +27,6 @@ public class ListaCanciones {
         }
     }
 
-    // 🔥 Saltar adelante
     public void saltarAdelante() {
 
         if (actual == null) {
@@ -44,7 +42,6 @@ public class ListaCanciones {
         }
     }
 
-    // 🔥 Saltar atrás
     public void saltarAtras() {
 
         if (actual == null) {
@@ -60,7 +57,6 @@ public class ListaCanciones {
         }
     }
 
-    // Mostrar canción actual
     public void mostrarActual() {
 
         if (actual == null) {
@@ -73,7 +69,6 @@ public class ListaCanciones {
                            " | " + actual.duracion + "s ]");
     }
 
-    // Mostrar lista completa
     public void mostrarLista() {
 
         Cancion aux = cabeza;
