@@ -8,12 +8,10 @@ public class ListaVuelos {
         cabeza = null;
     }
 
-    // Agregar al final (cola normal)
     public void agregarVuelo(String numero, String aerolinea, int combustible, int pasajeros) {
 
         Vuelo nuevo = new Vuelo(numero, aerolinea, combustible, pasajeros);
 
-        // Si tiene poco combustible → va al inicio
         if (combustible < 10) {
             nuevo.siguiente = cabeza;
             cabeza = nuevo;
@@ -30,12 +28,10 @@ public class ListaVuelos {
         }
     }
 
-    // 🔥 Reto: mover un vuelo al inicio
     public void reportarEmergencia(String numeroVuelo) {
 
         if (cabeza == null) return;
 
-        // Si ya está en la cabeza
         if (cabeza.numeroVuelo.equals(numeroVuelo)) {
             System.out.println("El vuelo ya está en prioridad.");
             return;
@@ -49,23 +45,19 @@ public class ListaVuelos {
             actual = actual.siguiente;
         }
 
-        // Si no se encontró
         if (actual == null) {
             System.out.println("Vuelo no encontrado.");
             return;
         }
 
-        // Desconectar nodo
         anterior.siguiente = actual.siguiente;
 
-        // Mover al inicio
         actual.siguiente = cabeza;
         cabeza = actual;
 
         System.out.println("Vuelo movido a prioridad.");
     }
 
-    // Mostrar lista
     public void mostrarVuelos() {
 
         Vuelo aux = cabeza;
