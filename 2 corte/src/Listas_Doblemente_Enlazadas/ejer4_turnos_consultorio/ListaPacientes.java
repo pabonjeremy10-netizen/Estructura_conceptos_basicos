@@ -9,7 +9,6 @@ public class ListaPacientes {
         cola = null;
     }
 
-    // Agregar paciente
     public void agregarPaciente(String nombre, int edad, int urgencia) {
 
         Paciente nuevo = new Paciente(nombre, edad, urgencia);
@@ -20,7 +19,6 @@ public class ListaPacientes {
             cola = nuevo;
         }
 
-        // 🔥 Caso urgencia máxima → después de la cabeza
         else if (urgencia == 5) {
 
             nuevo.siguiente = cabeza.siguiente;
@@ -32,13 +30,11 @@ public class ListaPacientes {
 
             cabeza.siguiente = nuevo;
 
-            // Si solo había un nodo
             if (cola == cabeza) {
                 cola = nuevo;
             }
         }
 
-        // Caso normal → al final
         else {
             cola.siguiente = nuevo;
             nuevo.anterior = cola;
@@ -46,7 +42,6 @@ public class ListaPacientes {
         }
     }
 
-    // Mostrar lista
     public void mostrarPacientes() {
 
         Paciente aux = cabeza;
@@ -66,7 +61,6 @@ public class ListaPacientes {
         System.out.println();
     }
 
-    // 🔥 RETO: recorrer desde cola y buscar mayor edad
     public void mostrarMayorEdad() {
 
         if (cola == null) {
@@ -77,7 +71,6 @@ public class ListaPacientes {
         Paciente aux = cola;
         Paciente mayor = cola;
 
-        // recorrido hacia atrás 🔥
         while (aux != null) {
             if (aux.edad > mayor.edad) {
                 mayor = aux;
