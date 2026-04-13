@@ -8,17 +8,14 @@ public class ListaProductos {
         cabeza = null;
     }
 
-    // Agregar según prioridad
     public void agregarProducto(String nombre, int cantidad, int dias) {
 
         Producto nuevo = new Producto(nombre, cantidad, dias);
 
-        // Si vence pronto → al inicio
         if (dias < 3) {
             nuevo.siguiente = cabeza;
             cabeza = nuevo;
         } else {
-            // Si no → al final
             if (cabeza == null) {
                 cabeza = nuevo;
             } else {
@@ -31,7 +28,6 @@ public class ListaProductos {
         }
     }
 
-    // Mostrar todo
     public void mostrarProductos() {
         Producto aux = cabeza;
 
@@ -48,7 +44,6 @@ public class ListaProductos {
         }
     }
 
-    // 🔥 Reto: mostrar los que vencen pronto (<5 días)
     public void mostrarProximosAVencer() {
 
         Producto aux = cabeza;
