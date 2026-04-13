@@ -11,7 +11,7 @@ public class ListaPestanas {
         actual = null;
     }
 
-    // Agregar pestaña al final
+    
     public void agregarPestana(String titulo, String url, String hora) {
 
         Pestana nueva = new Pestana(titulo, url, hora);
@@ -28,7 +28,6 @@ public class ListaPestanas {
         }
     }
 
-    // 🔥 RETO: cerrar pestaña por URL
     public void cerrarPestanaActual(String url) {
 
         if (cabeza == null) {
@@ -38,7 +37,6 @@ public class ListaPestanas {
 
         Pestana aux = cabeza;
 
-        // Buscar la pestaña
         while (aux != null && !aux.url.equals(url)) {
             aux = aux.siguiente;
         }
@@ -48,39 +46,34 @@ public class ListaPestanas {
             return;
         }
 
-        // 🔥 Caso 1: único nodo
         if (cabeza == cola) {
             cabeza = null;
             cola = null;
             actual = null;
         }
 
-        // 🔥 Caso 2: eliminar cabeza
         else if (aux == cabeza) {
             cabeza = cabeza.siguiente;
             cabeza.anterior = null;
             actual = cabeza;
         }
 
-        // 🔥 Caso 3: eliminar cola
         else if (aux == cola) {
             cola = cola.anterior;
             cola.siguiente = null;
             actual = cola;
         }
 
-        // 🔥 Caso 4: nodo intermedio
         else {
             aux.anterior.siguiente = aux.siguiente;
             aux.siguiente.anterior = aux.anterior;
 
-            actual = aux.anterior; // foco a la anterior
+            actual = aux.anterior;
         }
 
         System.out.println("Pestaña cerrada correctamente.");
     }
 
-    // Mostrar pestañas
     public void mostrarPestanas() {
 
         Pestana aux = cabeza;
