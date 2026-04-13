@@ -23,12 +23,11 @@ public class ListaFotos {
             actual = nueva;
         } else {
             cola.siguiente = nueva;
-            nueva.anterior = cola; // 🔥 doble enlace
+            nueva.anterior = cola; 
             cola = nueva;
         }
     }
 
-    // Siguiente foto
     public void siguiente() {
 
         if (actual == null) return;
@@ -40,7 +39,6 @@ public class ListaFotos {
         }
     }
 
-    // Foto anterior
     public void anterior() {
 
         if (actual == null) return;
@@ -52,7 +50,6 @@ public class ListaFotos {
         }
     }
 
-    // Mostrar actual
     public void mostrarActual() {
 
         if (actual == null) {
@@ -65,7 +62,6 @@ public class ListaFotos {
                            actual.resolucion + " ]");
     }
 
-    // 🔥 RETO: recorrer adelante y atrás
     public void reproducirGaleria() {
 
         if (cabeza == null) {
@@ -86,7 +82,7 @@ public class ListaFotos {
 
         System.out.println("\n--- RECORRIDO HACIA ATRÁS ---");
 
-        aux = cola; // 🔥 empezamos desde el final
+        aux = cola; 
 
         while (aux != null) {
             System.out.println("[ " + aux.nombreArchivo +
