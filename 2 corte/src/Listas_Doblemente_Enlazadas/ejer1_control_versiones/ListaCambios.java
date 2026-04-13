@@ -23,13 +23,12 @@ public class ListaCambios {
             actual = nuevo;
         } else {
             cola.siguiente = nuevo;
-            nuevo.anterior = cola;   // 🔥 doble enlace
+            nuevo.anterior = cola;
             cola = nuevo;
             actual = nuevo;
         }
     }
 
-    // 🔥 Deshacer (ir hacia atrás)
     public void deshacer() {
 
         if (actual == null) {
@@ -45,7 +44,6 @@ public class ListaCambios {
         }
     }
 
-    // 🔥 Rehacer (ir hacia adelante)
     public void rehacer() {
 
         if (actual == null) {
@@ -61,7 +59,6 @@ public class ListaCambios {
         }
     }
 
-    // Mostrar historial
     public void mostrarHistorial() {
 
         Cambio aux = cabeza;
