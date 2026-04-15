@@ -1,7 +1,5 @@
 package listas_circulares.ejer3_round_robin;
 
-package listas_circulares.ejer3_round_robin;
-
 import java.util.Scanner;
 
 public class App {
